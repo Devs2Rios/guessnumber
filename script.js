@@ -65,6 +65,8 @@ submit.addEventListener('click', function(event) {
         currentScore--;
       } else if (!guessInt) {
         currentMessage = defaultMessage;
+      } else {
+        currentMessage = '🤔 Star guessing!';
       }
     }
   } else {
@@ -79,7 +81,5 @@ submit.addEventListener('click', function(event) {
   score.textContent = currentScore;
 });
 // Reset
-again.addEventListener('click', function() {
-  preset();
-});
+again.addEventListener('click', preset);
 // ---------------------------------------------------------
