@@ -8,7 +8,12 @@ const secretNumberGenerator = () => {
 };
 // ---------------------------------------------------------
 // Mutable variables
-let currentNumber, currentScore, currentHighScore, currentMessage, winner;
+let currentNumber,
+  currentScore,
+  currentHighScore,
+  currentMessage,
+  winner,
+  looser;
 // ---------------------------------------------------------
 // HTML elements
 const body = document.querySelector('body'),
@@ -32,6 +37,7 @@ const preset = () => {
   currentScore = 20;
   score.textContent = currentScore;
   winner = false;
+  looser = false;
 };
 preset();
 // Set high score
@@ -65,8 +71,6 @@ submit.addEventListener('click', function(event) {
         currentScore--;
       } else if (!guessInt) {
         currentMessage = defaultMessage;
-      } else {
-        currentMessage = '🤔 Star guessing!';
       }
     }
   } else {
@@ -75,10 +79,18 @@ submit.addEventListener('click', function(event) {
     currentScore = 0;
     secretNumber.textContent = currentNumber;
     body.style.backgroundColor = 'rgb(255,0,0)';
+    looser = true;
   }
   // Change the messages in the document
   message.textContent = currentMessage;
   score.textContent = currentScore;
+});
+// Starr guessing
+guess.addEventListener('click', function() {
+  if (!winner && !looser) {
+    currentMessage = '🤔 Start guessing…';
+    message.textContent = currentMessage;
+  }
 });
 // Reset
 again.addEventListener('click', preset);
