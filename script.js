@@ -85,7 +85,7 @@ submit.addEventListener('click', function(event) {
   message.textContent = currentMessage;
   score.textContent = currentScore;
 });
-// Starr guessing
+// Start guessing
 guess.addEventListener('click', function() {
   if (!winner && !looser) {
     currentMessage = '🤔 Start guessing…';
